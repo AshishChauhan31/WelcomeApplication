@@ -1,5 +1,6 @@
 package com.example.welcome;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -12,6 +13,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -21,13 +26,16 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        EditText editText = findViewById(R.id.editText);
+        TextView textView = findViewById(R.id.textView);
+        EditText editText2 = findViewById(R.id.editText2);
+        Button button = findViewById(R.id.button);
+
         setSupportActionBar(toolbar);
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
+        button.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-
+            public void onClick(View v) {
+                Toast.makeText(MainActivity.this, "welcome you are log IN succesfully!!", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -79,18 +87,25 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
-
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-
+        if (id == R.id.nav_gallery)
+        {
+            Intent intent = new Intent();
+            intent.setAction(android.content.Intent.ACTION_GET_CONTENT);
+            intent.setType("image/*");
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+//        } else if (id == R.id.nav_slideshow)
+//        {
+//
+//        } else if (id == R.id.nav_manage)
+//        {
+//
+//        } else if (id == R.id.nav_share)
+//        {
+//
+//        } else if (id == R.id.nav_send)
+//        {
+//
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
